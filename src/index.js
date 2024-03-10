@@ -2,6 +2,39 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './style.css';
 
+  // '😈' , 😎, 👻, 👾
+const skills = [
+  {
+    name: 'html+css',
+    color: '#FFA000',
+    level: 'advanced',
+  },
+  {
+    name: 'JavaScript',
+    color: '#C6295E',
+    level: 'advanced',
+  },
+  {
+    name: 'nodeJs',
+    color: '#83B085',
+    level: 'advanced',
+  },
+  {
+    name: 'TypeScript',
+    color: '#6B9FC8',
+    level: 'beginner',
+  },
+  {
+    name: 'React',
+    color: '#1976D2',
+    level: 'intermediate',
+  },
+  {
+    name: 'mongoDB',
+    color: '#2E7D32',
+    level: 'intermediate',
+  },
+];
 const App = () => {
   return (
     <div className="card">
@@ -42,21 +75,21 @@ const Intro = () => {
 
 const SkillList = () => {
   return (
-    <div className="skill-list">
-      <Skill name="html+css 🤯" color="#FFA000" />
-      <Skill name="JavaScript 😎" color="#C6295E" />
-      <Skill name="nodeJs 👻" color="#83B085" />
-      <Skill name="TypeScript 👾" color="#6B9FC8" />
-      <Skill name="React 😈" color="#1976D2" />
-      <Skill name="mongoDB 👽" color="#2E7D32" />
-    </div>
+    <ul className="skill-list">
+      {skills.map((skill) => (
+        <Skill skillObject={skill} />
+      ))}
+    </ul>
   );
 };
 
-const Skill = (props) => {
+const Skill = ({skillObject}) => {
   return (
-    <span className="skill" style={{ backgroundColor: props.color }}>
-      {props.name}
+    <span className="skill" style={{ backgroundColor: skillObject.color }}>
+      {skillObject.name}
+      {skillObject.level === 'advanced' && '😈'}
+      {skillObject.level === 'intermediate' && '😎'}
+      {skillObject.level === 'beginner' && '👻'}
     </span>
   );
 };
